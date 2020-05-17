@@ -1,6 +1,7 @@
 window.onload = function(){
   var yyy = document.getElementById('xxx')
   var ctx = yyy.getContext('2d')
+  var lineWidth = 5
 
   autoSetCanvas(yyy)
   listenToMouse(yyy)
@@ -102,7 +103,7 @@ window.onload = function(){
   function drawLine(x1,y1,x2,y2){
     ctx.beginPath()
     ctx.moveTo(x1,y1)
-    ctx.lineWidth = 5
+    ctx.lineWidth = lineWidth
     ctx.lineTo(x2,y2)
     ctx.stroke() //路径
     ctx.closePath()
@@ -167,5 +168,25 @@ window.onload = function(){
     green.classList.remove('active')
     red.classList.remove('active')
     ctx.strokeStyle = 'red'
+  }
+  //画笔粗细
+  thin.onclick = function(){
+    lineWidth = 5
+  }
+  thick.onclick = function(){
+    lineWidth = 10
+  }
+  clear.onclick = function(){
+    ctx.clearRect(0,0,yyy.width,yyy.height)
+  }
+  //保存
+  downLoad.onclick = function(){
+    var url = yyy.toDataURL("image/png")
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = '我的画'
+    a.target = '_blank'
+    a.click()
   }
 }
