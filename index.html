@@ -5,13 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="canvas.js" charset="utf-8"></script>
+  <script src="//at.alicdn.com/t/font_1824558_c6tpp0x7t65.js"></script>
   <title>我的画板</title>
 </head>
 <body>
   <canvas id="xxx" widht=300 height=300></canvas>
   <div id='actions' class="actions">
-    <button id="eraser">橡皮擦</button>
-    <button id="brush">画笔</button>
+    <svg id="pen" class="icon active" aria-hidden="true">
+      <use xlink:href="#icon-Pencil"></use>
+    </svg>
+    <svg id="eraser" class="icon" aria-hidden="true">
+      <use xlink:href="#icon-eraser"></use>
+    </svg>
+  <ol class="colors">
+    <li id="red" class="red changeRed action"></li>
+    <li id="green" class="green"></li>
+    <li id="blue" class="blue"></li>
+  </ol>
   </div>
 </body>
 </html>

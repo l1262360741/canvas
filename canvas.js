@@ -94,28 +94,78 @@ window.onload = function(){
   //画圈
   function drawCircle(x, y, radius) {
     ctx.beginPath()
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = 'red'
     ctx.arc(x, y, radius, 0, Math.PI * 2)
     ctx.fill()
   }
   //画线
   function drawLine(x1,y1,x2,y2){
     ctx.beginPath()
-    ctx.strokeStyle = 'black'
     ctx.moveTo(x1,y1)
     ctx.lineWidth = 5
     ctx.lineTo(x2,y2)
     ctx.stroke() //路径
     ctx.closePath()
   }
+  red.onclick = function(){
+    eraserEnabled = false
+    pen.classList.add('active')
+    eraser.classList.remove('active')
+    ctx.strokeStyle = 'red'
+    pen.classList.add('changeRed')
+    red.classList.add('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+    pen.classList.remove('changeGreen')
+    pen.classList.remove('changeBlue')
+  }
+  green.onclick = function(){
+    eraserEnabled = false
+    pen.classList.add('active')
+    eraser.classList.remove('active')
+    ctx.strokeStyle = 'green'
+    pen.classList.add('changeGreen')
+    pen.classList.remove('changeRed')
+    pen.classList.remove('changeBlue')
+    green.classList.add('active')
+    red.classList.remove('active')
+    blue.classList.remove('active')
+  }
+  blue.onclick = function(){
+    eraserEnabled = false
+    pen.classList.add('active')
+    eraser.classList.remove('active')
+    ctx.strokeStyle = 'blue'
+    pen.classList.add('changeBlue')
+    pen.classList.remove('changeRed')
+    pen.classList.remove('changeGreen')
+    blue.classList.add('active')
+    green.classList.remove('active')
+    red.classList.remove('active')
+  }
   /*****橡皮擦 ******/
   var eraserEnabled = false
   eraser.onclick = function(){
     eraserEnabled = true
-    actions.className = 'actions x'
+    eraser.classList.add('active')
+    pen.classList.remove('active')
+    pen.classList.remove('changeBlue')
+    pen.classList.remove('changeRed')
+    pen.classList.remove('changeGreen')
+    blue.classList.remove('active')
+    green.classList.remove('active')
+    red.classList.remove('active')
   }
-  brush.onclick = function(){
+  pen.onclick = function(){
     eraserEnabled = false
-    actions.className = 'actions'
+    pen.classList.add('active')
+    eraser.classList.remove('active')
+    pen.classList.remove('changeBlue')
+    pen.classList.remove('changeRed')
+    pen.classList.remove('changeGreen')
+    blue.classList.remove('active')
+    green.classList.remove('active')
+    red.classList.remove('active')
+    ctx.strokeStyle = 'red'
   }
 }
